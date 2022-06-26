@@ -1,10 +1,14 @@
 import React from 'react';
+import Router from './Routes';
+import { BrowserRouter } from 'react-router-dom';
+import Header from './Pages/Header';
 
 function App() {
   return(
-    <div>
-      <h1>aaa</h1>
-    </div>
+    <BrowserRouter>
+      <Header/>
+      <Router/>
+    </BrowserRouter>
   )
 }
 
