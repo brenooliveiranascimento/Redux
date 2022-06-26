@@ -6,7 +6,7 @@ import Header from './Pages/Header';
 function App() {
   return(
     <BrowserRouter>
-    <Header/>
+      <Header/>
       <Router/>
     </BrowserRouter>
   )
