@@ -1,18 +1,22 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 import './style.css'
 
-class Reservas extends React.Component {
-  render() {
+function Reservas() {
+
+  const myReserves = useSelector( reducers => reducers.reserva )
+  
     return (
       <div>
-        <h1 className='title'>Você solicitou 1 reservas!</h1>
-
-        <div className='reservas'>
+        <h1 className='title'>Você solicitou {myReserves.length} reservas!</h1>
+      {
+        myReserves.map((reserva) => (
+          <div key={reserva.id} className='reservas'>
           <img
-            src='https://sujeitoprogramador.com/wp-content/uploads/2019/12/maceio.jpg'
-            alt='maceio'
+            src={reserva.image}
+            alt={reserva.title}
             />
-            <strong>Viagem maceio 7 idas</strong>
+            <strong>{reserva.title}</strong>
             <span>quantidade 2</span>
             <button
               type='button'
@@ -22,9 +26,11 @@ class Reservas extends React.Component {
               </span>
             </button>
         </div>
+        ))
+      }
+       
       </div>
     )
-  }
 }
 
 export default Reservas;

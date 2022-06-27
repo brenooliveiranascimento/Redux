@@ -1,10 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 import './styles.css'
 import logo from '../../assets/logo.svg'
 
-class Header extends React.Component {
-  render() {
+function Header() {
+
+  const reserveSize = useSelector(reducer => reducer.reserva)
+
     return (
       <header className='container'>
         <Link to={'/'}>
@@ -14,12 +17,11 @@ class Header extends React.Component {
         <Link to={'Reservas'}>
           <div className='reserva'>
             <strong>Minhas reservas</strong>
-            <span>0 reservas</span>
+            <span>{reserveSize.length} reservas</span>
           </div>
         </Link>
       </header>
     )
-  }
 }
 
 export default Header;
