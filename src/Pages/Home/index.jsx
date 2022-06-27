@@ -1,9 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import api from '../../services/api';
+import { useDispatch } from 'react-redux';
 import './style.css'
 
 function Home() {
+  const dispatch = useDispatch();
   const [trips, setTrips] = useState([]);
+
+  const handleTrip = (trip) => {
+    dispatch({
+      type: 'ADD_RESERVA',
+      trip
+    })
+  }
 
   useEffect(() => {
 
@@ -24,7 +33,7 @@ function Home() {
                 <strong>{trip.title}</strong>
                 <span>status: { trip.status ? 'disponivél' : 'indisponivel' }</span>
                 <button
-                  onClick={() => {}}>
+                  onClick={() => handleTrip(trip)}>
                     <span>SOLICITAR RESERVA</span>
                 </button>
               </li>
